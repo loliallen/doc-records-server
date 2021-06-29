@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  app:
+    image: doctor-records
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 3333:7890
+    depends_on:
+      - mongo
+  cron:
+    image: doctor-records-cron
+    build:
+      context: .
+      dockerfile: ./Dockerfile.cron
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    volumes:
+      - mongodb_volume:/data/db
+    restart: always
+    ports:
+      - 27017:27017
+
+volumes:
+  mongodb_volume:

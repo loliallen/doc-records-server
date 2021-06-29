@@ -1,0 +1,45 @@
+{
+  "name": "doctor-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server:prod\" \"npm run cron:prod\"",
+    "dev": "concurrently \"npm run server:dev\" \"npm run cron:dev\"",
+    "build": "tsc",
+    "prefill": "ts-node src/prefill",
+    "drop-db": "ts-node src/prefill/dropDb",
+    "server:prod": "node dist",
+    "server:dev": "ts-node-dev src",
+    "cron:dev": "ts-node src/services/cron",
+    "cron:start": "node dist/services/cron"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cron": "^1.8.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.14",
+    "uuid": "^8.3.2",
+    "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/cron": "^1.7.2",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.12",
+    "@types/jest": "^26.0.23",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^15.12.5",
+    "@types/uuid": "^8.3.0",
+    "@types/validator": "^13.1.4",
+    "concurrently": "^6.2.0",
+    "jest": "^27.0.5",
+    "nodemon": "^2.0.7",
+    "ts-node": "^10.0.0",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.3.4"
+  }
+}
