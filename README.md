@@ -10,7 +10,7 @@ $ docker-compose up -d --build
 ## 2 Запуск через `npm scripts`
 
 ```sh
-$ npm run server:dev
+$ npm run dev
 ```
 
 Запусит сервер и сервис для отпавки уведомлений, через модуль `concurently`
